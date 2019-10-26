@@ -12,9 +12,9 @@ const CommentDetail = (props) => {
           {props.author}
         </a>
         <div className="metadata">
-          <span className="date">Today ar 6:00 PM</span>
+          <span className="date">{props.timeAgo}</span>
         </div>
-        <div className="text">Nice blog post!</div>
+        <div className="text">{faker.lorem.lines(1)}</div>
       </div>
     </div>
   );
