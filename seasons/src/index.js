@@ -3,14 +3,9 @@ import ReactDOM from "react-dom";
 
 class App extends React.Component {
 
-  // created
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      lat: null,
-      errorMessage: ''
-    };
+  state = {
+    lat: null,
+    errorMessage: ''
   }
 
   // React says we have define render
@@ -28,12 +23,8 @@ class App extends React.Component {
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({ lat: position.coords.latitude })
-      },
-      (err) => {
-        this.setState({ errorMessage: err.message })
-      }
+      (position) => this.setState({ lat: position.coords.latitude }),
+      (err) => this.setState({ errorMessage: err.message })
     );
   }
 
