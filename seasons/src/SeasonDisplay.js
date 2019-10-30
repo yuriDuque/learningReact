@@ -8,7 +8,13 @@ class SeasonDisplay extends React.Component {
   }
 
   render() {
-    return <div>Latitute: {this.state.season}</div>
+    const text = this.state.season === 'winter' ? 'Bur, it is chilly' : 'Lets hit the beach';
+
+    return (
+      <div>
+        <h1>{text}</h1>
+      </div>
+    );
   }
 
   componentDidMount() {
