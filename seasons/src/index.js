@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import SeasonDisplay from "./SeasonDisplay.js"
+
 class App extends React.Component {
 
   state = {
@@ -11,7 +13,7 @@ class App extends React.Component {
   // React says we have define render
   render() {
     if (this.state.lat && !this.state.errorMessage) {
-      return <div>Latitude: {this.state.lat}</div >;
+      return <SeasonDisplay lat={this.state.lat} />;
     }
 
     if (!this.state.lat && this.state.errorMessage) {
