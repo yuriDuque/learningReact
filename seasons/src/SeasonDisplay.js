@@ -1,34 +1,35 @@
-import React from "react";
+import React from 'react'
 
-class SeasonDisplay extends React.Component {
-
-  state = {
-    season: "",
-    month: ""
+const seasonConfig = {
+  summer: {
+    text: "Let's hit the beach!",
+    iconName: 'sun'
+  },
+  winter: {
+    text: "Burr it is cold!",
+    iconName: 'snowflake'
   }
+}
 
-  render() {
-    const text = this.state.season === 'winter' ? 'Bur, it is chilly' : 'Lets hit the beach';
-    const icon = this.state.season === 'winter' ? 'snowflake' : 'sun';
-
-    return (
-      <div>
-        <i className={`${icon} icon`} />
-        <h1>{text}</h1>
-        <i className={`${icon} icon`} />
-      </div>
-    );
+const getSeason = (lat, month) => {
+  if (month > 2 && month < 9) {
+    return lat > 0 ? 'summer' : 'winter';
+  } else {
+    return lat > 0 ? 'winter' : 'summer';
   }
+}
 
-  componentDidMount() {
-    this.setState({ month: new Date().getMonth() })
+const SeasonDisplay = props => {
+  const season = getSeason(props.lat, new Date().getMonth());
+  const { text, iconName } = seasonConfig[season];
 
-    if (this.state.month > 2 && this.state.month < 9) {
-      this.setState({ season: this.props.lat > 0 ? 'summer' : 'winter' })
-    } else {
-      this.setState({ season: this.props.lat > 0 ? 'winter' : 'summer' })
-    }
-  }
+  return (
+    <div>
+      <i className={`${iconName} icon`}></i>
+      <h1>{text}</h1>
+      <i className={`${iconName} icon`}></i>
+    </div>
+  );
 }
 
 export default SeasonDisplay;
