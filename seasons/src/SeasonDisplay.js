@@ -9,10 +9,13 @@ class SeasonDisplay extends React.Component {
 
   render() {
     const text = this.state.season === 'winter' ? 'Bur, it is chilly' : 'Lets hit the beach';
+    const icon = this.state.season === 'winter' ? 'snowflake' : 'sun';
 
     return (
       <div>
+        <i className={`${icon} icon`} />
         <h1>{text}</h1>
+        <i className={`${icon} icon`} />
       </div>
     );
   }
