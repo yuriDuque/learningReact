@@ -11,18 +11,7 @@ class App extends React.Component {
       lat: null,
       errorMessage: ''
     };
-
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // we call setState
-        this.setState({ lat: position.coords.latitude })
-      },
-      (err) => {
-        this.setState({ errorMessage: err.message })
-      }
-    );
   }
-
 
   // React says we have define render
   render() {
@@ -35,6 +24,25 @@ class App extends React.Component {
     }
 
     return <div>Loading...</div >
+  }
+
+  componentDidMount() {
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({ lat: position.coords.latitude })
+      },
+      (err) => {
+        this.setState({ errorMessage: err.message })
+      }
+    );
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  componentWillUnmount() {
+
   }
 }
 
