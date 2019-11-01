@@ -6,25 +6,25 @@ import Spinner from "./Spinner.js"
 
 class App extends React.Component {
 
-  state = {
+  state = {// setando os stados / data da aplicação
     lat: null,
     errorMessage: ''
   }
 
-  renderContent() {
+  renderContent() { //função auxiliar que formata o "html"/jsx para ser enviado para o render
     if (!this.state.lat && this.state.errorMessage) {
       return <div>Error: {this.state.errorMessage}</div >
     }
 
     if (this.state.lat && !this.state.errorMessage) {
-      return <SeasonDisplay lat={this.state.lat} />;
+      return <SeasonDisplay lat={this.state.lat} />; // chamando o compoenent
     }
 
-    return <Spinner message="Please accept location request" />
+    return <Spinner message="Please accept location request" /> // chamando o compoenent
   }
 
   // React says we have define render
-  render() {
+  render() { // renderiza o html/jsx na tela
     return (
       <div className="border red">
         {this.renderContent()}
@@ -32,18 +32,18 @@ class App extends React.Component {
     )
   }
 
-  componentDidMount() {
-    window.navigator.geolocation.getCurrentPosition(
+  componentDidMount() { // eusado para definir metodos que serão executados depois do component ser criado. Mounted
+    window.navigator.geolocation.getCurrentPosition( // pega a localização do usuário
       (position) => this.setState({ lat: position.coords.latitude }),
       (err) => this.setState({ errorMessage: err.message })
     );
   }
 
-  componentDidUpdate() {
+  componentDidUpdate() { // usado para definir metodos que serão executados quando algum stado for alterado / whatch
 
   }
 
-  componentWillUnmount() {
+  componentWillUnmount() { // usado para definir métodos que serão executados quando o component for desmontado / initValues
 
   }
 }

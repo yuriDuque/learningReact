@@ -1,7 +1,7 @@
 import './SeasonDisplay.css'
 import React from 'react'
 
-const seasonConfig = {
+const seasonConfig = { // seta os dados para ficar mais facil de passar uma determinada configuração para o component
   summer: {
     text: "Let's hit the beach!",
     iconName: 'sun'
@@ -12,7 +12,7 @@ const seasonConfig = {
   }
 }
 
-const getSeason = (lat, month) => {
+const getSeason = (lat, month) => { // define a estação com base na localização e o mes 
   if (month > 2 && month < 9) {
     return lat > 0 ? 'summer' : 'winter';
   } else {
@@ -21,8 +21,8 @@ const getSeason = (lat, month) => {
 }
 
 const SeasonDisplay = props => {
-  const season = getSeason(props.lat, new Date().getMonth());
-  const { text, iconName } = seasonConfig[season];
+  const season = getSeason(props.lat, new Date().getMonth()); // pega o mes atual
+  const { text, iconName } = seasonConfig[season]; //seta as configurações
 
   return (
     <div className={`season-display ${season}`}>

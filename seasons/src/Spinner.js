@@ -10,7 +10,7 @@ const Spinner = (props) => {
   );
 }
 
-Spinner.defaultProps = {
+Spinner.defaultProps = { // usado para definir valores default para as propriedades / props
   message: "Loading..."
 }
 
