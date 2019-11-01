@@ -5,8 +5,10 @@ class SearchBar extends React.Component {
     term: ''
   };
 
-  onSubmitForm(event) {
-    event.preventDefault()
+  onSubmitForm = event => {
+    event.preventDefault();
+
+    console.log(this.state.term)
   }
 
   render() {
