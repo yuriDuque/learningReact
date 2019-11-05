@@ -4,7 +4,10 @@ const VideoItem = ({ video }) => {
   // props.video
 
   return (
-    <div>Video Item</div>
+    <div>
+      <img src={video.snippet.thumbnails.medium.url} />
+      {video.snippet.title}
+    </div>
   );
 }
 
