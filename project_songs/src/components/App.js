@@ -1,6 +1,6 @@
 import React from 'react';
 
-import actions from '../actions';
+import selectSong from '../actions/index';
 
 const App = () => {
 
